@@ -10,7 +10,11 @@ after_success:
 -  docker build -t jumgall/multi-nginx ./nginx
 -  docker build -t jumgall/multi-server ./server
 -  docker build -t jumgall/multi-worker ./worker
-
+-  echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+-  docker push jumgall/multi-client 
+-  docker push jumgall/multi-nginx
+-  docker push jumgall/multi-server
+-  docker push jumgall/multi-worker
 # deploy:
 #   provider: 'elasticbeanstalk'
 #   region: 'us-east-2'
